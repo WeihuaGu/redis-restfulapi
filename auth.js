@@ -7,7 +7,7 @@ const isValidToken = (token) => {
 }
  
 const auth = async (req, res, next) => {
-  if(process.env.AUTH=='true'){
+  if(process.env.AUTH==='true'){
     const { token } = req.headers; // 假设令牌在请求头中的字段名为 "token"
     if (token && isValidToken(token)) 
       next();
