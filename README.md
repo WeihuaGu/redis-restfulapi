@@ -5,8 +5,9 @@
   
   Set the following environment variables on your space provider if deployed：
   
-1. set REDIS_URL 
-2. set TOKEN env
+1. set REDIS_URL
+2. set AUTH='true'
+3. set TOKEN env
   
   Or locally for testing:
   
