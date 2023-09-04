@@ -17,6 +17,38 @@
 - `npm start`
 ## usage
 - When making requests, please include the token in the header with the format "token:xxx", where "xxx" is the base64 value of the TOKEN variable that has been set.
+### For example, if the TOKEN environment variable you set is "hiredis".
+- then first convert it to base64.
+```
+echo hiredis | base64
+aGlyZWRpcwo=
+```
+
+- Set a key
+```
+Get /redis/set/test/testkey/thetestvalue
+HEADERS
+token: dG9rZW4xMjMK
+```
+return 
+```
+{
+    "result": "\"OK\""
+}
+```
+- Get value
+```
+GET /redis/get/test/testkey
+HEADERS
+token: dG9rZW4xMjMK
+```
+return
+```
+{
+    "testkey": "thetestvalue"
+}
+```
+
   
 ## restfulapi
 - Get Value
