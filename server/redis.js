@@ -11,6 +11,12 @@ var redisget = async(key)=>{
 var redislpush = async(key,list)=>{
         return await client.lpush(key,list)
 }
+var redislpop = async(key,list)=>{
+        return await client.lpop(key)
+}
+var redisrpop = async(key,list)=>{
+        return await client.rpop(key)
+}
 
 var redislrange = async(key,start,end)=>{
         return await client.lrange(key,start,end)
@@ -25,6 +31,8 @@ module.exports = {
 	get:redisget,
 	set:redisset,
 	lpush:redislpush,
+	lpop:redislpop,
+	rpop:redisrpop,
 	lrange:redislrange,
 	del:redisdel
 

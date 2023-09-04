@@ -44,6 +44,20 @@ router.get('/push/:prefix/:key/:value',async function (req, res) {
         result: JSON.stringify(result)
   })
 });
+router.get('/lpop/:prefix/:key',async function (req, res) {
+  var thekey = req.params.prefix+'-'+req.params.key
+  var result = await redis.lpop(thekey)
+  res.json({
+        result: JSON.stringify(result)
+  })
+});
+router.get('/rpop/:prefix/:key',async function (req, res) {
+  var thekey = req.params.prefix+'-'+req.params.key
+  var result = await redis.rpop(thekey)
+  res.json({
+        result: JSON.stringify(result)
+  })
+});
 router.post('/push/:prefix/:key',async function (req, res) {
   var thekey = req.params.prefix+'-'+req.params.key
   var result = await redis.lpush(thekey,JSON.stringify(req.body))
