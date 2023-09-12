@@ -73,6 +73,15 @@ router.get('/list/:prefix/:key',async function (req, res) {
   result[req.params.key] = list
   res.json(result)
 });
+router.get('/list/:prefix/:key/:start/:stop',async function (req, res) {
+  var thekey = req.params.prefix+'-'+req.params.key
+  var start = parseInt(req.params.start);
+  var stop = parseInt(req.params.stop);
+  var result = {}
+  var list = await redis.lrange(thekey,start,stop)
+  result[req.params.key] = list
+  res.json(result)
+});
 
 
 module.exports = router;
